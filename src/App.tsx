@@ -5,8 +5,8 @@ import './App.css'
 function App() {
 
   return (
-    <div className="App">
-      <div className='p-4 flex gap-3 items-center'>
+    <div className="h-screen m-4">
+      <div className='p-4 flex gap-2.5 w-full justify-between items-baseline'>
         <Nav></Nav>
         <Header></Header>
       </div>

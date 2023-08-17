@@ -89,7 +89,9 @@ Use this section to outline areas that you want to continue focusing on in futur
 
 - [Why You Should STOP Using Google Fonts (And How to Self-Host Your Own Web Fonts)](https://youtu.be/363s_ziVwTg) - I found this great resource while learning about web performance. Here you can understand why you should self-host your web fonts and how to do so
 
+- [Hamburger Menu with a Side of React Hooks and Styled Components](https://css-tricks.com/hamburger-menu-with-a-side-of-react-hooks-and-styled-components/) - I used this tutorial as a guide to create the hamburger menu. Even though I've never used styled-components, it wasn't difficult to figure out what's going on.
 
+- [How to Get the Window’s Width and Height in React](https://codingbeautydev.com/blog/react-get-window-width-height/) - I made use of this `window.innerWidth` property to hide and show the hamburger icon and show navigation items in desktop view
 
 
 ## Author
