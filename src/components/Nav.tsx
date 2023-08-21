@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 
 export default function Nav(){
     const [open, setOpen] = useState(false)
-    const genericHamburgerLine = `h-0.5 w-5 my-0.5 bg-black transition ease transform duration-300`;
+    const genericHamburgerLine = `h-0.5 w-4 my-0.5 bg-black transition ease transform duration-300`;
 
     const [windowSize, setWindowSize] = useState([
         window.innerWidth,
@@ -31,7 +31,7 @@ export default function Nav(){
     return(
         <div className='flex shrink-0 gap-3 items-end'>
         <button
-          className="flex flex-col h-12 w-12 justify-center items-center group sm:hidden bg-transparent absolute z-30 left-3"
+          className="flex flex-col h-12 w-12 justify-center items-center group sm:hidden bg-transparent absolute z-30 -left-1 top-3"
           onClick={handleClickMenu} 
         >
           <div
