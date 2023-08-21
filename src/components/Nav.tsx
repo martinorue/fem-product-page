@@ -56,7 +56,7 @@ export default function Nav(){
         </button>
 
             {/* ------------------------ */}
-              <div className={`${open && 'w-screen h-screen absolute bg-lightbox opacity-60 top-0 transition-opacity duration-500'} opacity-0`}></div>
+              <div className={`${open && 'w-screen h-screen absolute bg-lightbox opacity-60 top-0 transition-opacity duration-500 z-10'} opacity-0`}></div>
               <div className={`absolute h-screen opacity-0 top-0 p-6 w-2/3 transition duration-300 ease-in-out bg-white ${open ? 'z-20  translate-x-0    opacity-100' : '-translate-x-full'}`}>
                     <nav className='mt-14'>
                         <ul className={`${windowSize[0] > 640 ? 'flex' : ''}`}>
