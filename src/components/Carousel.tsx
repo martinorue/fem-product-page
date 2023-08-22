@@ -3,8 +3,6 @@ import { Product, Image } from '../../types'
 import IconPrevious from './IconPrevious'
 import IconNext from './IconNext'
 
-
-
 const Img = ({src}: Image) =>{
     return(
       <img 
@@ -15,7 +13,6 @@ const Img = ({src}: Image) =>{
         />
     )
 }
-
 
 export default function Carousel({
   autoSlide = false,

@@ -3,6 +3,7 @@ import Header from './components/Header'
 import './App.css'
 import Carousel from './components/Carousel'
 import { products } from '../data'
+import ProductInfo from './components/ProductInfo'
 
 
 function App() {
@@ -16,7 +17,7 @@ function App() {
       <div className='max-w-lg'>
         <Carousel products={products} />
       </div>
-      <p className='text-orange'>sneaker company</p>
+      <ProductInfo product={products[0]}/>
     </div>
   )
 }

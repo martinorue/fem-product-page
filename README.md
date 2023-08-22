@@ -93,7 +93,7 @@ Use this section to outline areas that you want to continue focusing on in futur
 
 - [How to Get the Window’s Width and Height in React](https://codingbeautydev.com/blog/react-get-window-width-height/) - I made use of this `window.innerWidth` property to hide and show the hamburger icon and show navigation items in desktop view
 
-
+- [Build a Carousel Component like Instagram purely in ReactJS and TailwindCSS](https://www.youtube.com/watch?v=XJSOgV4VELk) - I followed this tutorial to create a carousel without libraries
 
 ## Author
 
