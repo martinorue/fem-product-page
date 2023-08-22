@@ -4,6 +4,7 @@ import './App.css'
 import Carousel from './components/Carousel'
 import { products } from '../data'
 import ProductInfo from './components/ProductInfo'
+import ProductCart from './components/ProductCart'
 
 
 function App() {
@@ -17,7 +18,10 @@ function App() {
       <div className='max-w-lg'>
         <Carousel products={products} />
       </div>
-      <ProductInfo product={products[0]}/>
+      <div className='flex flex-col gap-4 p-4'>
+        <ProductInfo product={products[0]}/>
+        <ProductCart />
+      </div>
     </div>
   )
 }
