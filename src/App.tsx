@@ -1,7 +1,9 @@
 import Nav from './components/Nav'
 import Header from './components/Header'
 import './App.css'
-import ImageCarousel from './components/ImageCarousel'
+import Carousel from './components/Carousel'
+import { products } from '../data'
+
 
 function App() {
 
@@ -11,8 +13,8 @@ function App() {
         <Nav></Nav>
         <Header></Header>
       </div>
-      <div>
-        <ImageCarousel />
+      <div className='max-w-lg'>
+        <Carousel products={products} />
       </div>
       <p className='text-orange'>sneaker company</p>
     </div>

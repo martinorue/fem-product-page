@@ -93,9 +93,7 @@ Use this section to outline areas that you want to continue focusing on in futur
 
 - [How to Get the Window’s Width and Height in React](https://codingbeautydev.com/blog/react-get-window-width-height/) - I made use of this `window.innerWidth` property to hide and show the hamburger icon and show navigation items in desktop view
 
-- [Customizing Swiper.js prev/next arrow buttons and pagination bullets in React](https://dev.to/ivadyhabimana/customizing-swiperjs-prevnext-arrow-buttons-and-pagination-bullets-in-react-3gkh) - I was able to implement the image slider by following this guide
 
-- [Provide Typescript definition for Element](https://github.com/nolimits4web/swiper/issues/6466) - I turned to this thread to solve this Swiper issue with TypeScript: `TS2339: Property 'swiper-container' does not exist on type 'JSX.IntrinsicElements'`.
 
 ## Author
 
