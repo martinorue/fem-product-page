@@ -7,8 +7,9 @@ type ProductInfoProps = {
 
 export default function ProductInfo({product}: ProductInfoProps) {
 
-    const {title, description, price, discountPercentage} = product
-  return (
+const {title, description, price, discountPercentage} = product
+
+return (
     <section className='flex flex-col gap-4'>
         <span className='text-orange uppercase font-bold text-sm tracking-wider'>sneaker company</span>
         <h1 className='text-3xl font-bold text-very-dark-blue'>{title}</h1>

@@ -5,15 +5,20 @@ import Carousel from './components/Carousel'
 import { products } from '../data'
 import ProductInfo from './components/ProductInfo'
 import ProductCart from './components/ProductCart'
+import { useContext } from 'react'
+import { CartContext } from './context/CartContext'
+import { useCart } from './hooks/useCart'
 
 
 function App() {
-
+ const {getItemQuantity} = useCart()
+ console.log(products[0].id)
+  
   return (
       <div className="h-screen">
         <div className='flex gap-4 w-full justify-between items-baseline'>
           <Nav />
-          <Header />
+          <Header productQuantity={getItemQuantity(products[0].id)} />
         </div>
         <div className='max-w-lg'>
           <Carousel products={products} />

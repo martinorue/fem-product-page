@@ -13,15 +13,15 @@ export function useCart(){
     }, [cartItems])
 
     function getItemQuantity(id: number){
-        return cartItems.find(item => item.id === id)?.quantity || 0
+        return cartItems.find(item => item.id == id)?.quantity || 0
     }
 
     function addToCart(id: number){
-        const item = cartItems.find(item => item.id == id)
-
+        const item = cartItems.find(item => item.id === id)
+    
         if(item){
-            setCartItems(cartItems.map(item => item.id == id ? {...item, quantity: item.quantity + productQuantity} : item))
-        }else{
+            setCartItems(cartItems.map(item => item.id === id ? {...item, quantity: item.quantity + productQuantity} : item))
+        } else {
             const newCartItem: CartItem = {
                 id: id,
                 quantity: productQuantity
@@ -41,12 +41,19 @@ export function useCart(){
         setProductQuantity(nextQuantity)
       }
 
+      const reducer = (quantity: number, item: CartItem) => {
+        console.log(item)
+        return item.quantity + quantity
+    }
+      const cartQuantity = cartItems.reduce(reducer, 0)
+
       return{
         getItemQuantity,
         addToCart,
         increaseItemQuantity,
         decreaseItemQuantity,
-        productQuantity
+        productQuantity,
+        cartQuantity
       }
     
 }

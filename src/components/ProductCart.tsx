@@ -1,6 +1,6 @@
 import CartIcon from "./CartIcon"
 import { Product } from "../../types"
-import { useCart } from "../hooks/useCart";
+import { useCart } from "../hooks/useCart"
 
 type ProductCartProps = {
   product: Product;
@@ -8,10 +8,11 @@ type ProductCartProps = {
 
 export default function ProductCart({product}: ProductCartProps) {
   
-  const {decreaseItemQuantity, increaseItemQuantity, addToCart, productQuantity} = useCart()
+  const { decreaseItemQuantity, increaseItemQuantity, addToCart, productQuantity, getItemQuantity } = useCart()
 
   return (
     <div className="flex flex-col gap-4">
+      <div>{getItemQuantity(product.id)}</div>
         <div className='flex gap-4 w-full justify-between items-baseline px-5'>
             <button onClick={decreaseItemQuantity}><span className={`${productQuantity === 1 ? 'text-grayish-blue' : 'text-orange'} text-2xl font-bold`}>-</span></button>
             <span className="font-semibold text-very-dark-blue">{productQuantity}</span>
