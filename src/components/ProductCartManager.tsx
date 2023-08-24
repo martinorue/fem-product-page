@@ -3,11 +3,11 @@ import { Product } from "../../types"
 import { useContext } from "react";
 import { CartContext } from '../context/CartContext'
 
-type ProductCartProps = {
+type ProductCartManagerProps = {
   product: Product;
 };
 
-export default function ProductCart({product}: ProductCartProps) {
+export default function ProductCartManager({product}: ProductCartManagerProps) {
   
   const { 
     decreaseItemQuantity, 

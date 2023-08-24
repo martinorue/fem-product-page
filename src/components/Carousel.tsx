@@ -17,18 +17,18 @@ const Img = ({src}: Image) =>{
 export default function Carousel({
   autoSlide = false,
   autoSlideInterval = 3000,
-  products,
+  product,
 }:{
   autoSlide?: boolean,
   autoSlideInterval?: number,
-  products: Product[]
+  product: Product
 }){
   const [current, setCurrent] = useState(0)
 
   const prev = () =>
-    setCurrent((current) => (current === 0 ? products[0].images.length - 1 : current - 1))
+    setCurrent((current) => (current === 0 ? product.images.length - 1 : current - 1))
   const next = () =>
-    setCurrent((current) => (current === products[0].images.length - 1 ? 0 : current + 1))
+    setCurrent((current) => (current === product.images.length - 1 ? 0 : current + 1))
 
     useEffect(()=>{
       if(!autoSlide) return
@@ -42,11 +42,9 @@ export default function Carousel({
         className="flex transition-transform ease-out duration-500"
         style={{ transform: `translateX(-${current * 100}%)` }}
       >
-      {products.map((product: Product) => {
-        return product.images.map((image, id) => {
+      {product.images.map((image, id) => {
           return <Img key={id} src={image.src} />
-        })
-      })}
+        })}
       </div>
       <div className="absolute inset-0 flex items-center justify-between p-4">
         <button
@@ -65,36 +63,3 @@ export default function Carousel({
     </div>
   );
 };
-
-
-
-// export default function ImageCarousel() {
-  
-  //   const handleNextImage = () => {
-    //     const nextCurrent = current === productImages.length -1 ? 0 : current + 1;
-    //     setCurrent(nextCurrent);
-    //   };
-    
-    //   const handlePreviousImage = () => {
-      //     const nextCurrent = current === 0 ? productImages.length -1 : current - 1;
-      //     setCurrent(nextCurrent);
-      //   };
-      
-      //   return (
-//     <div className="grid items-center">
-//       <button className="absolute" onClick={handleNextImage}>
-//         <svg width="12" height="18" xmlns="http://www.w3.org/2000/svg">
-//           <path d="M11 1 3 9l8 8" stroke="#1D2026" strokeWidth="3" fill="none" fillRule="evenodd"/>
-//         </svg>
-//       </button>
-//       <div>
-//         <Image />
-//       </div>
-//       <button className="absolute justify-self-end" onClick={handlePreviousImage}>
-//         <svg width="13" height="18" xmlns="http://www.w3.org/2000/svg">
-//           <path d="m2 1 8 8-8 8" stroke="#1D2026" strokeWidth="3" fill="none" fillRule="evenodd"/>
-//         </svg>
-//       </button>
-//     </div>
-//   )
-// }

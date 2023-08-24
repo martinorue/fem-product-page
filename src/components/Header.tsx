@@ -3,15 +3,21 @@ import avatar from '../assets/images/image-avatar.png'
 import sneakersLogo from '../assets/images/logo.svg'
 import { CartContext } from '../context/CartContext'
 import CartIcon from './CartIcon'
+import Cart from './Cart'
+import { Product } from '../../types'
 
-export default function Header(){
-    const { cartQuantity } = useContext(CartContext)
+type HeaderProps = {
+    product: Product
+}
+
+export default function Header({product}: HeaderProps){
+    const { cartQuantity, handleOpenCart, isOpen, getItemQuantity } = useContext(CartContext)
 
     return(
         <header className='p-6 flex w-full'>
             <img src={sneakersLogo} alt="logo de sneakers" width="138" height="20" className='self-center'/>
             <div className='ml-auto flex gap-4 relative'>
-                <button>
+                <button onClick={handleOpenCart}>
                     <CartIcon fillColor='fill-very-dark-blue' hoverColor='hover:fill-dark-grayish-blue transition-all duration-200'/>
                 </button>
                 {cartQuantity > 0 &&
@@ -21,6 +27,7 @@ export default function Header(){
                 }
                 <img src={avatar} alt="avatar" width="22" height="20"/>
             </div>
+            {isOpen && <Cart product={product} cartQuantity={cartQuantity} getItemQuantity={getItemQuantity} />}
         </header>
     )
 }

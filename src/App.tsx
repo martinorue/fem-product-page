@@ -4,11 +4,7 @@ import './App.css'
 import Carousel from './components/Carousel'
 import { products } from '../data'
 import ProductInfo from './components/ProductInfo'
-import ProductCart from './components/ProductCart'
-import { useContext } from 'react'
-import { CartContext } from './context/CartContext'
-import { useCart } from './hooks/useCart'
-
+import ProductCartManager from './components/ProductCartManager'
 
 function App() {
   
@@ -16,14 +12,14 @@ function App() {
       <div className="h-screen">
         <div className='flex gap-4 w-full justify-between items-baseline'>
           <Nav />
-          <Header />
+          <Header product={products[0]} />
         </div>
         <div className='max-w-lg'>
-          <Carousel products={products} />
+          <Carousel product={products[0]} />
         </div>
         <div className='flex flex-col gap-4 p-4'>
           <ProductInfo product={products[0]} />
-          <ProductCart product={products[0]} />
+          <ProductCartManager product={products[0]} />
         </div>
       </div>
   )

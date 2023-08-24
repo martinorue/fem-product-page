@@ -1,4 +1,4 @@
-import { ReactNode, createContext, useState, useEffect } from "react";
+import { ReactNode, createContext, useState, useEffect } from "react"
 
 type CartItem = {
     id: number
@@ -13,20 +13,24 @@ type CartContext = {
   getItemQuantity: (id: number) => number
   increaseItemQuantity: () => void
   decreaseItemQuantity: () => void
+  handleOpenCart: () => void
+  isOpen: boolean
   addToCart: (id: number) => void
 //   removeFromCart: (id: number) => void
   cartQuantity: number
 //   cartItems: CartItem[]
   productQuantity: number
+  
 }
 
 export const CartContext = createContext({} as CartContext)
 
 
 export function CartContextProvider({ children }: CartContextProviderProps){
-    const storedCartItems = localStorage.getItem('cartItems');
-    const initialCartItems = storedCartItems ? JSON.parse(storedCartItems) : [];
-    const [cartItems, setCartItems] = useState<CartItem[]>(initialCartItems);
+    const storedCartItems = localStorage.getItem('cartItems')
+    const initialCartItems = storedCartItems ? JSON.parse(storedCartItems) : []
+    const [cartItems, setCartItems] = useState<CartItem[]>(initialCartItems)
+    const [isOpen, setIsOpen] = useState(false)
 
     const [productQuantity, setProductQuantity] = useState(1)
 
@@ -55,18 +59,21 @@ export function CartContextProvider({ children }: CartContextProviderProps){
     const increaseItemQuantity = () => {
         const nextQuantity = productQuantity + 1
         setProductQuantity(nextQuantity)
-      }
+    }
     
-      const decreaseItemQuantity = () => {
+    const decreaseItemQuantity = () => {
         if(productQuantity === 1) return
         const nextQuantity = productQuantity - 1
         setProductQuantity(nextQuantity)
-      }
-
-      const reducer = (quantity: number, item: CartItem) => {
-        return item.quantity + quantity
     }
-      const cartQuantity = cartItems.reduce(reducer, 0)
+
+    const handleOpenCart = () => {
+        setIsOpen(!isOpen)
+    }
+
+    const reducer = (quantity: number, item: CartItem) => item.quantity + quantity
+        
+    const cartQuantity = cartItems.reduce(reducer, 0)
 
     return (
         <CartContext.Provider 
@@ -75,8 +82,10 @@ export function CartContextProvider({ children }: CartContextProviderProps){
             addToCart,
             increaseItemQuantity,
             decreaseItemQuantity,
+            handleOpenCart,
+            isOpen,
             productQuantity,
-            cartQuantity
+            cartQuantity    
         }}
         >
             {children}
