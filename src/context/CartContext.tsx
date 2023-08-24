@@ -1,5 +1,4 @@
 import { ReactNode, createContext, useState, useEffect } from "react";
-// import { useCart } from "../hooks/useCart";
 
 type CartItem = {
     id: number

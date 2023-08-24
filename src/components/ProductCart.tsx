@@ -11,7 +11,6 @@ type ProductCartProps = {
 export default function ProductCart({product}: ProductCartProps) {
   
   const { 
-    cartQuantity, 
     decreaseItemQuantity, 
     increaseItemQuantity, 
     productQuantity, 

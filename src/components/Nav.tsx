@@ -54,17 +54,15 @@ export default function Nav(){
             }`}
           />
         </button>
-
-            {/* ------------------------ */}
               <div className={`${open && 'w-screen h-screen absolute bg-lightbox opacity-60 top-0 transition-opacity duration-500 z-10'} opacity-0`}></div>
-              <div className={`absolute h-screen opacity-0 top-0 p-6 w-2/3 transition duration-300 ease-in-out bg-white ${open ? 'z-20  translate-x-0    opacity-100' : '-translate-x-full'}`}>
+              <div className={`absolute h-screen opacity-0 top-0 py-6 px-4 w-2/3 font-semibold transition duration-300 ease-in-out bg-white ${open ? 'z-20  translate-x-0    opacity-100' : '-translate-x-full'}`}>
                     <nav className='mt-14'>
-                        <ul className={`${windowSize[0] > 640 ? 'flex' : ''}`}>
-                            <li><a>Collections</a></li>
-                            <li><a>Men</a></li>
-                            <li><a>Women</a></li>
-                            <li><a>About</a></li>
-                            <li><a>Contact</a></li>
+                        <ul className={`flex flex-col gap-4 ${windowSize[0] > 640 ? 'flex-row' : ''}`}>
+                            <li><a href='#'>Collections</a></li>
+                            <li><a href='#'>Men</a></li>
+                            <li><a href='#'>Women</a></li>
+                            <li><a href='#'>About</a></li>
+                            <li><a href='#'>Contact</a></li>
                         </ul>
                     </nav>
               </div>
