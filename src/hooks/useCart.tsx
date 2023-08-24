@@ -42,7 +42,6 @@ export function useCart(){
       }
 
       const reducer = (quantity: number, item: CartItem) => {
-        console.log(item)
         return item.quantity + quantity
     }
       const cartQuantity = cartItems.reduce(reducer, 0)
