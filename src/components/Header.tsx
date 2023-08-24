@@ -1,14 +1,11 @@
+import { useContext } from 'react'
 import cartIcon from '../assets/images/icon-cart.svg'
 import avatar from '../assets/images/image-avatar.png'
 import sneakersLogo from '../assets/images/logo.svg'
-import { useCart } from '../hooks/useCart'
+import { CartContext } from '../context/CartContext'
 
-type HeaderProps = {
-    productQuantity: number
-}
-
-export default function Header({ productQuantity }: HeaderProps){
-    const { cartQuantity } = useCart() 
+export default function Header(){
+    const {cartQuantity} = useContext(CartContext)
     
     return(
         <header className='p-6 flex w-full'>

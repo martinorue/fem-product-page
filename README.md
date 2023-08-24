@@ -85,7 +85,7 @@ Use this section to outline areas that you want to continue focusing on in futur
 
 ### Useful resources
 
-- [Don't nest <nav> inside <header>](https://dev.to/masakudamatsu/don-t-nest-nav-inside-header-do-nest-the-hamburger-menu-button-inside-nav-6cp) - I wasn't shure to nest a `<nav>` inside a `<header>` and I found this great article that cleared up my doubts
+- [Don't nest `<nav>` inside `<header>`](https://dev.to/masakudamatsu/don-t-nest-nav-inside-header-do-nest-the-hamburger-menu-button-inside-nav-6cp) - I wasn't shure to nest a `<nav>` inside a `<header>` and I found this great article that cleared up my doubts
 
 - [Why You Should STOP Using Google Fonts (And How to Self-Host Your Own Web Fonts)](https://youtu.be/363s_ziVwTg) - I found this great resource while learning about web performance. Here you can understand why you should self-host your web fonts and how to do so
 

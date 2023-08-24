@@ -1,5 +1,3 @@
-import React from 'react'
-
 export default function IconNext() {
   return (
     <svg width="13" height="18" xmlns="http://www.w3.org/2000/svg">
