@@ -3,7 +3,6 @@ import { Product } from "../../types"
 import { useContext } from "react";
 import { CartContext } from '../context/CartContext'
 
-
 type ProductCartProps = {
   product: Product;
 };
@@ -28,7 +27,9 @@ export default function ProductCart({product}: ProductCartProps) {
           onClick={() => addToCart(product.id)} 
           className="w-full flex justify-center gap-3 bg-orange 
           text-light-grayish-blue p-4 rounded-xl" >
-            <CartIcon />Add to cart
+            <CartIcon 
+              fillColor="fill-light-grayish-blue" 
+              hoverColor=""/>Add to cart
         </button>
     </div>
   )
