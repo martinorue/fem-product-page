@@ -17,8 +17,8 @@ export default function ProductCartManager({product}: ProductCartManagerProps) {
   } = useContext(CartContext)
 
   return (
-    <div className="flex flex-col gap-4">
-        <div className='flex gap-4 w-full justify-between items-baseline px-5'>
+    <div className="flex flex-col gap-4 md:flex-row md:items-center">
+        <div className='flex gap-4 w-full justify-between items-baseline px-5 md:max-w-[140px]'>
             <button onClick={decreaseItemQuantity}><span className={`${productQuantity === 1 ? 'text-grayish-blue' : 'text-orange'} text-2xl font-bold`}>-</span></button>
             <span className="font-semibold text-very-dark-blue">{productQuantity}</span>
             <button onClick={increaseItemQuantity}><span className="text-orange text-2xl font-bold">+</span></button>
@@ -26,7 +26,7 @@ export default function ProductCartManager({product}: ProductCartManagerProps) {
         <button
           onClick={() => addToCart(product.id)} 
           className="w-full flex justify-center gap-3 bg-orange 
-          text-light-grayish-blue p-4 rounded-xl" >
+          text-light-grayish-blue p-4 rounded-xl shadow-md shadow-orange">
             <CartIcon 
               fillColor="fill-light-grayish-blue" 
               hoverColor=""/>Add to cart

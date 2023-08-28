@@ -10,6 +10,7 @@ const Img = ({src}: Image) =>{
         alt="sneaker image" 
         width={1000} 
         height={1000}
+        className='md:rounded-xl'
         />
     )
 }
@@ -46,7 +47,7 @@ export default function Carousel({
           return <Img key={id} src={image.src} />
         })}
       </div>
-      <div className="absolute inset-0 flex items-center justify-between p-4">
+      <div className="absolute inset-0 flex items-center justify-between p-4 md:hidden">
         <button
           onClick={prev}
           className="rounded-full shadow bg-white/80 text-gray-800 hover:bg-white w-11 h-11 flex items-center justify-start pl-3.5"

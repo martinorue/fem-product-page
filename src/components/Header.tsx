@@ -16,7 +16,7 @@ export default function Header({product}: HeaderProps){
     return(
         <header className='p-6 flex w-full'>
             <img src={sneakersLogo} alt="logo de sneakers" width="138" height="20" className='self-center'/>
-            <div className='ml-auto flex gap-4 relative'>
+            <div className='ml-auto flex gap-8 relative'>
                 <button onClick={handleOpenCart}>
                     <CartIcon fillColor='fill-very-dark-blue' hoverColor='hover:fill-dark-grayish-blue transition-all duration-200'/>
                 </button>
@@ -25,7 +25,7 @@ export default function Header({product}: HeaderProps){
                         <span>{cartQuantity}</span>
                     </div>
                 }
-                <img src={avatar} alt="avatar" width="22" height="20"/>
+                <img src={avatar} alt="avatar" width="22" height="20" className='md:w-10'/>
             </div>
             {isOpen && <Cart product={product} cartQuantity={cartQuantity} getItemQuantity={getItemQuantity} />}
         </header>

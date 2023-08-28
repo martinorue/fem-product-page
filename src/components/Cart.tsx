@@ -15,7 +15,7 @@ export default function Cart({ product, cartQuantity, getItemQuantity }: CartPro
 
     return(
         <div className='w-full min-h-52 bg-white absolute top-20 z-10 divide-y
-         divide-gray-200 max-w-[360px] left-1.5 rounded-lg'>
+         divide-gray-200 max-w-[350px] md:right-12 rounded-lg shadow-2xl'>
             <div className="font-semibold p-4">Cart</div>
             {cartQuantity === 0 ?
                 <div className="flex items-center justify-center h-[calc(13rem-56px)]">
