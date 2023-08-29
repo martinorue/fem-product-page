@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { Product, Image } from '../../types'
 import IconPrevious from './IconPrevious'
 import IconNext from './IconNext'
+import ModalCarousel from './ModalCarousel'
 
 type ProductImageProps = {
   src: string,
@@ -11,7 +12,7 @@ type ProductImageProps = {
   styles: string
 }
 
-const ProductImage = ({src, alt, width, height, styles}: ProductImageProps) => {
+export const ProductImage = ({src, alt, width, height, styles}: ProductImageProps) => {
     return(
       <img 
         src={src} 
@@ -33,6 +34,7 @@ export default function Carousel({
   product: Product
 }){
   const [current, setCurrent] = useState(0)
+  const [open, setOpen] = useState(true)
 
   const prev = () =>
     setCurrent((current) => (current === 0 ? product.images.length - 1 : current - 1))
@@ -49,7 +51,11 @@ export default function Carousel({
     <div className='overflow-hidden relative flex flex-col gap-7'>
       <div
         className="flex transition-transform ease-out duration-500 cursor-pointer"
-        // onClick={openOverlayCarousel}
+        onClick={() => {
+          const nextOpen = !open
+          console.log(nextOpen)
+          setOpen(nextOpen)
+        }}
         style={{ transform: `translateX(-${current * 100}%)` }}
       >
       {product.images.map((image, id) => {
@@ -96,7 +102,9 @@ export default function Carousel({
           })
         }
       </div>
-      
+      {open &&
+        <ModalCarousel openModal={open} setOpen={setOpen} product={product}/>
+      }
     </div>
   );
 };
