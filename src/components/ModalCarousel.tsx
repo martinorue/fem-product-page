@@ -1,18 +1,17 @@
 import { Dispatch, Fragment, SetStateAction, useRef, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
-import Carousel, { ProductImage } from './Carousel'
+import { ProductImage } from './Carousel'
 import { Product } from '../../types'
 import IconPrevious from './IconPrevious'
 import IconNext from './IconNext'
-// import { ExclamationTriangleIcon } from '@heroicons/react/24/outline'
 
 type ModalCarouselProps = {
-    openModal: boolean
+    open: boolean
     setOpen: Dispatch<SetStateAction<boolean>>
     product: Product
 }
 
-export default function ModalCarousel({openModal, setOpen, product}: ModalCarouselProps) {
+export default function ModalCarousel({open, setOpen, product}: ModalCarouselProps) {
     const [current, setCurrent] = useState(0)
 
     const prev = () =>
@@ -23,7 +22,7 @@ export default function ModalCarousel({openModal, setOpen, product}: ModalCarous
     const cancelButtonRef = useRef(null)
 
   return (
-    <Transition.Root show={openModal} as={Fragment}>
+    <Transition.Root show={open} as={Fragment}>
       <Dialog as="div" className="relative z-10 bg-transparent" initialFocus={cancelButtonRef} onClose={setOpen}>
         <Transition.Child
           as={Fragment}
@@ -48,43 +47,45 @@ export default function ModalCarousel({openModal, setOpen, product}: ModalCarous
               leaveFrom="opacity-100 translate-y-0 sm:scale-100"
               leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
             >
-              <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-transparent text-left transition-all sm:my-8 sm:w-full sm:max-w-lg">
-                <div className="bg-transparent px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+              <Dialog.Panel className="relative w-96 flex flex-col gap-3 transform rounded-lg bg-transparent text-left transition-all">
+                <div className="bg-transparent flex flex-row-reverse outline-none border-none bg-none">
                   <button
                     type="button"
-                    className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto"
+                    className="text-sm font-semibold mt-0 w-auto"
                     onClick={() => setOpen(false)}
                     ref={cancelButtonRef}
                   >
-                    Cancel
+                    <svg width="14" height="15" xmlns="http://www.w3.org/2000/svg" fill="hsl(0, 0%, 100%)" className='hover:fill-orange transition-all duration-200 cursor-pointer'>
+                      <path d="m11.596.782 2.122 2.122L9.12 7.499l4.597 4.597-2.122 2.122L7 9.62l-4.595 4.597-2.122-2.122L4.878 7.5.282 2.904 2.404.782l4.595 4.596L11.596.782Z"  fillRule="evenodd"/>
+                    </svg>
                   </button>
                 </div>
                 <div className="bg-transparent">
                   <div className="sm:flex sm:items-start">
-                    <div className='overflow-hidden relative flex flex-col gap-7'>
+                    <div className='relative flex flex-col gap-7'>
                         <div
-                            className="flex transition-transform ease-out duration-500 cursor-pointer"
+                            className="flex cursor-pointer"
                             onClick={() => {
-                            const nextOpen = !open
-                            console.log(nextOpen)
-                            setOpen(nextOpen)
+                              const nextOpen = !open
+                              console.log(nextOpen)
+                              setOpen(nextOpen)
                             }}
                             style={{ transform: `translateX(-${current * 100}%)` }}
                         >
                         {product.images.map((image, id) => {
-                            return <ProductImage key={id} src={image.src} alt='sneaker image' width={1000} height={1000} styles='md:rounded-xl' />
+                            return <ProductImage key={id} src={image.src} alt='sneaker image' width={1000} height={1000} styles={`md:rounded-xl ${current === id ? "" : "opacity-0"}`} />
                             })}
                         </div>
-                        <div className="absolute inset-0 flex items-center justify-between">
+                        <div className="absolute inset-0 flex items-center justify-between z-20">
                             <button
                             onClick={prev}
-                            className="rounded-full shadow bg-white/80 text-gray-800 hover:bg-white w-11 h-11 flex items-center justify-start pl-3.5"
+                            className="absolute rounded-full shadow -left-5 bg-white/80 text-gray-800 hover:bg-white w-11 h-11 flex items-center justify-start pl-3.5"
                             >
                             <IconPrevious />
                             </button>
                             <button
                             onClick={next}
-                            className="rounded-full shadow bg-white/80 text-gray-800 hover:bg-white w-11 h-11 flex items-center justify-start pl-4"
+                            className="absolute z-30 -right-5 rounded-full shadow bg-white/80 text-gray-800 hover:bg-white w-11 h-11 flex items-center justify-start pl-4"
                             >
                             <IconNext />
                             </button>
@@ -110,7 +111,7 @@ export default function ModalCarousel({openModal, setOpen, product}: ModalCarous
                                 alt='sneaker image' 
                                 width={80} 
                                 height={80} 
-                                styles={`md:rounded-lg hover:opacity-50 cursor-pointer transition-opacity duration-300 overflow-hidden ${current === id ? "outline outline-2 outline-orange" : ""}`} 
+                                styles={`md:rounded-lg hover:opacity-50 cursor-pointer transition-opacity duration-300 ${current === id ? "outline outline-2 outline-orange" : ""}`} 
                             />
                             </label>
                         </div>
@@ -124,5 +125,6 @@ export default function ModalCarousel({openModal, setOpen, product}: ModalCarous
         </div>
       </Dialog>
     </Transition.Root>
+
   )
 }

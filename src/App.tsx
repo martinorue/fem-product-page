@@ -10,7 +10,7 @@ function App() {
   
   return (
       <div className="h-screen mx-auto my-0 max-w-6xl">
-        <div className='flex gap-4 w-full justify-between items-baseline'>
+        <div className='flex gap-4 w-full justify-between items-center'>
           <Nav />
           <Header product={products[0]} />
         </div>

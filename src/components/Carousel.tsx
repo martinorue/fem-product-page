@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Product, Image } from '../../types'
+import { Product } from '../../types'
 import IconPrevious from './IconPrevious'
 import IconNext from './IconNext'
 import ModalCarousel from './ModalCarousel'
@@ -34,7 +34,7 @@ export default function Carousel({
   product: Product
 }){
   const [current, setCurrent] = useState(0)
-  const [open, setOpen] = useState(true)
+  const [open, setOpen] = useState(false)
 
   const prev = () =>
     setCurrent((current) => (current === 0 ? product.images.length - 1 : current - 1))
@@ -103,7 +103,7 @@ export default function Carousel({
         }
       </div>
       {open &&
-        <ModalCarousel openModal={open} setOpen={setOpen} product={product}/>
+        <ModalCarousel open={open} setOpen={setOpen} product={product}/>
       }
     </div>
   );

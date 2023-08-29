@@ -95,7 +95,9 @@ Use this section to outline areas that you want to continue focusing on in futur
 
 - [Build a Carousel Component like Instagram purely in ReactJS and TailwindCSS](https://www.youtube.com/watch?v=XJSOgV4VELk) - I followed this tutorial to create a carousel without libraries
 
-- [How To Create An Advanced Shopping Cart With React and TypeScript](https://www.youtube.com/watch?v=lATafp15HWA&t=2293s) - I used this tutorial as a guide to applying Context to the shopping cart and thus being able to display the badge indicating the quantity of products in the cart. 
+- [How To Create An Advanced Shopping Cart With React and TypeScript](https://www.youtube.com/watch?v=lATafp15HWA&t=2293s) - I used this tutorial as a guide to applying Context to the shopping cart and thus being able to display the badge indicating the quantity of products in the cart.
+
+- [Modal component](https://headlessui.com/) - I used Headless UI to make the overlay carousel by modifiyng a modal component
 
 ## Author
 
