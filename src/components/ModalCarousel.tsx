@@ -1,4 +1,4 @@
-import { Dispatch, Fragment, SetStateAction, useRef, useState } from 'react'
+import { Dispatch, Fragment, SetStateAction, useEffect, useRef, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { ProductImage } from './Carousel'
 import { Product } from '../../types'
@@ -15,6 +15,8 @@ export default function ModalCarousel({open, setOpen, product}: ModalCarouselPro
     const [current, setCurrent] = useState(0)
     const [close, setClose] = useState(false)
 
+    const modalRef = useRef<HTMLDivElement>(null)
+
     const prev = () =>
     setCurrent((current) => (current === 0 ? product.images.length - 1 : current - 1))
   const next = () =>
@@ -22,9 +24,23 @@ export default function ModalCarousel({open, setOpen, product}: ModalCarouselPro
 
     const cancelButtonRef = useRef(null)
 
+    useEffect(() => {
+      const handleClickOutside = (event: MouseEvent) => {
+          if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
+              setOpen(false)
+          }
+      }
+  
+      document.addEventListener('mousedown', handleClickOutside)
+  
+      return () => {
+          document.removeEventListener('mousedown', handleClickOutside)
+      }
+  }, [])
+
   return (
-    <Transition.Root show={open} as={Fragment}>
-      <Dialog as="div" className="relative z-10 bg-transparent" initialFocus={cancelButtonRef} onClose={() => setClose(true)}>
+    <Transition.Root show={open} as={Fragment} >
+      <Dialog as="div" className="relative z-10 bg-transparent" initialFocus={cancelButtonRef} onClose={() => setClose(!open)}>
         <Transition.Child
           as={Fragment}
           enter="ease-out duration-300"
@@ -37,8 +53,8 @@ export default function ModalCarousel({open, setOpen, product}: ModalCarouselPro
           <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
         </Transition.Child>
 
-        <div className="fixed inset-0 z-10 overflow-y-auto">
-          <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+        <div  className="fixed inset-0 z-10 overflow-y-auto">
+          <div  className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
             <Transition.Child
               as={Fragment}
               enter="ease-out duration-300"
@@ -48,13 +64,13 @@ export default function ModalCarousel({open, setOpen, product}: ModalCarouselPro
               leaveFrom="opacity-100 translate-y-0 sm:scale-100"
               leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
             >
-              <Dialog.Panel className="relative w-96 flex flex-col gap-3 transform rounded-lg bg-transparent text-left transition-all">
-                <div className="bg-transparent flex flex-row-reverse outline-none border-none bg-none">
+              <Dialog.Panel ref={modalRef} className="relative w-96 flex flex-col gap-3 transform rounded-lg bg-transparent text-left transition-all">
+                <div   className="bg-transparent flex flex-row-reverse outline-none border-none bg-none">
                   <button
                     type="button"
                     className="text-sm font-semibold mt-0 w-auto"
                     onClick={() => setOpen(false)}
-                    ref={cancelButtonRef}
+                    
                   >
                     <svg width="14" height="15" xmlns="http://www.w3.org/2000/svg" fill="hsl(0, 0%, 100%)" className='hover:fill-orange transition-all duration-200 cursor-pointer'>
                       <path d="m11.596.782 2.122 2.122L9.12 7.499l4.597 4.597-2.122 2.122L7 9.62l-4.595 4.597-2.122-2.122L4.878 7.5.282 2.904 2.404.782l4.595 4.596L11.596.782Z"  fillRule="evenodd"/>
@@ -67,11 +83,8 @@ export default function ModalCarousel({open, setOpen, product}: ModalCarouselPro
                         <div
                             className="flex cursor-pointer"
                             onClick={() => {
-                              const nextOpen = !open
-                              console.log(nextOpen)
-                              setOpen(nextOpen)
+                              setOpen(!open)
                             }}
-                            // style={{ transform: `translateX(${100}%)` }}
                         >
                         {product.images.map((image, id) => {
                             return <ProductImage key={id} src={image.src} alt='sneaker image' width={1000} height={1000} styles={`md:rounded-xl ${current === id ? "" : "hidden"}`} />

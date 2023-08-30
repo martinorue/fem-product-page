@@ -53,7 +53,6 @@ export default function Carousel({
         className="flex gap-1 transition-transform ease-out duration-500 cursor-pointer"
         onClick={() => {
           const nextOpen = !open
-          console.log(nextOpen)
           setOpen(nextOpen)
         }}
         style={{ transform: `translateX(-${current * 100 + current}%)` }}
