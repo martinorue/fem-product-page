@@ -25,7 +25,7 @@ export default function Header({product}: HeaderProps){
                         <span>{cartQuantity}</span>
                     </div>
                 }
-                <img src={avatar} alt="avatar" width="22" height="20" className='w-auto'/>
+                <img src={avatar} alt="avatar" width="22" height="20" className='w-auto hover:outline outline-2 outline-orange rounded-full'/>
             </div>
             {isOpen && <Cart product={product} cartQuantity={cartQuantity} getItemQuantity={getItemQuantity} removeFromCart={removeFromCart} setIsOpen={setIsOpen} />}
         </header>
