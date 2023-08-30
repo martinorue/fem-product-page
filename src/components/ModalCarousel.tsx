@@ -13,6 +13,7 @@ type ModalCarouselProps = {
 
 export default function ModalCarousel({open, setOpen, product}: ModalCarouselProps) {
     const [current, setCurrent] = useState(0)
+    const [close, setClose] = useState(false)
 
     const prev = () =>
     setCurrent((current) => (current === 0 ? product.images.length - 1 : current - 1))
@@ -23,7 +24,7 @@ export default function ModalCarousel({open, setOpen, product}: ModalCarouselPro
 
   return (
     <Transition.Root show={open} as={Fragment}>
-      <Dialog as="div" className="relative z-10 bg-transparent" initialFocus={cancelButtonRef} onClose={setOpen}>
+      <Dialog as="div" className="relative z-10 bg-transparent" initialFocus={cancelButtonRef} onClose={() => setClose(true)}>
         <Transition.Child
           as={Fragment}
           enter="ease-out duration-300"
@@ -70,10 +71,10 @@ export default function ModalCarousel({open, setOpen, product}: ModalCarouselPro
                               console.log(nextOpen)
                               setOpen(nextOpen)
                             }}
-                            style={{ transform: `translateX(-${current * 100}%)` }}
+                            // style={{ transform: `translateX(${100}%)` }}
                         >
                         {product.images.map((image, id) => {
-                            return <ProductImage key={id} src={image.src} alt='sneaker image' width={1000} height={1000} styles={`md:rounded-xl ${current === id ? "" : "opacity-0"}`} />
+                            return <ProductImage key={id} src={image.src} alt='sneaker image' width={1000} height={1000} styles={`md:rounded-xl ${current === id ? "" : "hidden"}`} />
                             })}
                         </div>
                         <div className="absolute inset-0 flex items-center justify-between z-20">
