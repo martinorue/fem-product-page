@@ -29,7 +29,7 @@ export default function Nav(){
       }
     
     return(
-        <div className='flex shrink-0 gap-3 items-center relative'>
+        <div className='flex shrink-0 gap-3 items-center'>
           <nav className='absolute left-60 hidden lg:flex'>
             <ul className={`flex flex-row items-center h-11 gap-4 ${windowSize[0] > 640 ? 'flex-row' : ''}`}>
               <li><a className='hover:border-b-4 border-b-orange pb-[30px]' href='#'>Collections</a></li>

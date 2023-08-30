@@ -1,3 +1,4 @@
+import { useRef, useEffect, LegacyRef } from "react"
 import { Product } from "../../types"
 import { formatPrice } from "../utils/formatPrice"
 import IconDelete from "./IconDelete"
@@ -6,15 +7,33 @@ type CartProps = {
     cartQuantity: number
     getItemQuantity: (id: number) => number
     product: Product
+    removeFromCart: (id: number) => void
+    setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-export default function Cart({ product, cartQuantity, getItemQuantity }: CartProps){
+export default function Cart({ product, cartQuantity, getItemQuantity, removeFromCart, setIsOpen }: CartProps){
     const { price } = product
     const itemQuantity = getItemQuantity(product.id)
     const total = price * itemQuantity
+    const cartRef = useRef<HTMLDivElement>(null)
+
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (cartRef.current && !cartRef.current.contains(event.target as Node)) {
+                setIsOpen(false)
+            }
+        }
+    
+        document.addEventListener('mousedown', handleClickOutside)
+    
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside)
+        }
+    }, [])
+    
 
     return(
-        <div className='w-full min-h-52 bg-white absolute top-20 z-10 divide-y
+        <div ref={cartRef} className='w-full min-h-52 bg-white absolute top-20 z-10 divide-y
          divide-gray-200 max-w-[350px] md:right-12 rounded-lg shadow-2xl'>
             <div className="font-semibold p-4">Cart</div>
             {cartQuantity === 0 ?
@@ -29,9 +48,9 @@ export default function Cart({ product, cartQuantity, getItemQuantity }: CartPro
                             <p>{product.title}</p>
                             <p>${formatPrice(price)} x {itemQuantity} <span className="text-very-dark-blue font-bold">${formatPrice(total)}</span></p>
                         </div>
-                        <span className="p-3">
+                        <button onClick={(e) => removeFromCart(product.id)}>
                             <IconDelete />
-                        </span>
+                        </button>
                     </div>
                     <button className="w-full rounded-lg
                          bg-gradient-to-r from-orange to-amber-500

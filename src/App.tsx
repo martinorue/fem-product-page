@@ -10,11 +10,11 @@ function App() {
   
   return (
       <div className="h-screen mx-auto my-0 max-w-6xl">
-        <div className='flex gap-4 w-full justify-between items-center'>
+        <div className='flex relative gap-4 w-full justify-between items-center'>
           <Nav />
           <Header product={products[0]} />
         </div>
-        <div className='md:flex md:items-center md:p-16 gap-4 justify-center'>
+        <div className='md:flex md:items-center md:pt-8 gap-4 justify-center'>
           <div className='max-w-sm'>
             <Carousel product={products[0]} />
           </div>

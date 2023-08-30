@@ -48,15 +48,15 @@ export default function Carousel({
     }, [])
 
   return (
-    <div className='overflow-hidden relative flex flex-col gap-7'>
+    <div className='overflow-hidden relative flex flex-col gap-5'>
       <div
-        className="flex transition-transform ease-out duration-500 cursor-pointer"
+        className="flex gap-1 transition-transform ease-out duration-500 cursor-pointer"
         onClick={() => {
           const nextOpen = !open
           console.log(nextOpen)
           setOpen(nextOpen)
         }}
-        style={{ transform: `translateX(-${current * 100}%)` }}
+        style={{ transform: `translateX(-${current * 100 + current}%)` }}
       >
       {product.images.map((image, id) => {
           return <ProductImage key={id} src={image.src} alt='sneaker image' width={1000} height={1000} styles='md:rounded-xl' />
@@ -92,8 +92,8 @@ export default function Carousel({
                   <ProductImage 
                     src={image.src} 
                     alt='sneaker image' 
-                    width={80} 
-                    height={80} 
+                    width={70} 
+                    height={70} 
                     styles={`md:rounded-lg hover:opacity-50 cursor-pointer transition-opacity duration-300 overflow-hidden ${current === id ? "outline outline-2 outline-orange" : ""}`} 
                   />
                 </label>

@@ -11,7 +11,7 @@ type HeaderProps = {
 }
 
 export default function Header({product}: HeaderProps){
-    const { cartQuantity, handleOpenCart, isOpen, getItemQuantity } = useContext(CartContext)
+    const { cartQuantity, handleOpenCart, isOpen, getItemQuantity, removeFromCart, setIsOpen } = useContext(CartContext)
 
     return(
         <header className='p-6 flex w-full border-b-[1px] border-gray-200'>
@@ -27,7 +27,7 @@ export default function Header({product}: HeaderProps){
                 }
                 <img src={avatar} alt="avatar" width="22" height="20" className='w-auto'/>
             </div>
-            {isOpen && <Cart product={product} cartQuantity={cartQuantity} getItemQuantity={getItemQuantity} />}
+            {isOpen && <Cart product={product} cartQuantity={cartQuantity} getItemQuantity={getItemQuantity} removeFromCart={removeFromCart} setIsOpen={setIsOpen} />}
         </header>
     )
 }

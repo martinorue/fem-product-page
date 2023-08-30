@@ -15,12 +15,12 @@ type CartContext = {
   decreaseItemQuantity: () => void
   handleOpenCart: () => void
   isOpen: boolean
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
   addToCart: (id: number) => void
-//   removeFromCart: (id: number) => void
+  removeFromCart: (id: number) => void
   cartQuantity: number
 //   cartItems: CartItem[]
   productQuantity: number
-  
 }
 
 export const CartContext = createContext({} as CartContext)
@@ -75,6 +75,11 @@ export function CartContextProvider({ children }: CartContextProviderProps){
         
     const cartQuantity = cartItems.reduce(reducer, 0)
 
+    const removeFromCart = (id: number) => {
+        const items = cartItems.filter(item => item.id !== id)
+        setCartItems([...items])
+    }
+
     return (
         <CartContext.Provider 
         value={{
@@ -84,8 +89,10 @@ export function CartContextProvider({ children }: CartContextProviderProps){
             decreaseItemQuantity,
             handleOpenCart,
             isOpen,
+            setIsOpen,
             productQuantity,
-            cartQuantity    
+            cartQuantity,
+            removeFromCart    
         }}
         >
             {children}
