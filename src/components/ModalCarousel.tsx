@@ -4,6 +4,7 @@ import { ProductImage } from './Carousel'
 import { Product } from '../../types'
 import IconPrevious from './IconPrevious'
 import IconNext from './IconNext'
+import { useClickOutside } from '../hooks/useClickOutside'
 
 type ModalCarouselProps = {
     open: boolean
@@ -15,28 +16,14 @@ export default function ModalCarousel({open, setOpen, product}: ModalCarouselPro
     const [current, setCurrent] = useState(0)
     const [close, setClose] = useState(false)
 
-    const modalRef = useRef<HTMLDivElement>(null)
+    const modalRef = useClickOutside(() => setOpen(false));
 
     const prev = () =>
     setCurrent((current) => (current === 0 ? product.images.length - 1 : current - 1))
-  const next = () =>
+    const next = () =>
     setCurrent((current) => (current === product.images.length - 1 ? 0 : current + 1))
 
     const cancelButtonRef = useRef(null)
-
-    useEffect(() => {
-      const handleClickOutside = (event: MouseEvent) => {
-          if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
-              setOpen(false)
-          }
-      }
-  
-      document.addEventListener('mousedown', handleClickOutside)
-  
-      return () => {
-          document.removeEventListener('mousedown', handleClickOutside)
-      }
-  }, [])
 
   return (
     <Transition.Root show={open} as={Fragment} >

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { useClickOutside } from '../hooks/useClickOutside';
 
 
 export default function Nav(){
@@ -8,28 +9,29 @@ export default function Nav(){
     const [windowSize, setWindowSize] = useState([
         window.innerWidth,
         window.innerHeight,
-      ]);
+    ]);
     
-      useEffect(() => {
-        const handleWindowResize = () => {
-          const nextWindowSize = [window.innerWidth, window.innerHeight];
-          setWindowSize(nextWindowSize);
-        };
+    useEffect(() => {
+      const handleWindowResize = () => {
+      const nextWindowSize = [window.innerWidth, window.innerHeight];
+        setWindowSize(nextWindowSize);
+      };
     
-        window.addEventListener('resize', handleWindowResize);
+      window.addEventListener('resize', handleWindowResize);
     
-        return () => {
-          window.removeEventListener('resize', handleWindowResize);
-        };
-      }, []);
+      return () => {
+        window.removeEventListener('resize', handleWindowResize);
+      };
+    }, []);
     
-      const handleClickMenu = () => {
-        const nextOpen = !open
-        setOpen(nextOpen)
-      }
+    const handleClickMenu = () => {
+        setOpen(!open)
+    }
+
+    const menuRef = useClickOutside(() => setOpen(false));
     
     return(
-        <div className='flex shrink-0 gap-3 items-center'>
+        <div  className='flex shrink-0 gap-3 items-center'>
           <nav className='text-dark-grayish-blue absolute left-60 hidden lg:flex'>
             <ul className={`flex flex-row items-center h-11 gap-4 ${windowSize[0] > 640 ? 'flex-row' : ''}`}>
               <li><a className='hover:text-very-dark-blue hover:border-b-4 border-b-orange pb-[30px]' href='#'>Collections</a></li>
@@ -39,31 +41,33 @@ export default function Nav(){
               <li><a className='hover:text-very-dark-blue hover:border-b-4 border-b-orange pb-[30px]' href='#'>Contact</a></li>
             </ul>
           </nav>
-        <button
-          className="flex flex-col h-12 w-12 justify-center items-center group sm:hidden bg-transparent absolute z-30 -left-1 top-3"
-          onClick={handleClickMenu} 
-        >
-          <div
-            className={`${genericHamburgerLine} ${
-              open
-                ? "rotate-45 translate-y-1 opacity-60 group-hover:opacity-100 "
-                : "opacity-60 group-hover:opacity-100"
-            }`}
-          />
-          <div
-            className={`${genericHamburgerLine} ${
-              open ? "opacity-0" : "opacity-60 group-hover:opacity-100 "
-            }`}
-          />
-          <div
-            className={`${genericHamburgerLine} ${
-             open
-                ? "-rotate-45 -translate-y-2 opacity-60 group-hover:opacity-100 "
-                : "opacity-60 group-hover:opacity-100"
-            }`}
-          />
-        </button>
+       
         <div className={`${open && 'w-screen h-screen absolute bg-lightbox opacity-60 top-0 transition-opacity duration-500 z-10'} opacity-0`}></div>
+        <div ref={menuRef}>
+          <button
+            className="flex flex-col h-12 w-12 justify-center items-center group sm:hidden bg-transparent absolute z-30 -left-1 top-3"
+            onClick={handleClickMenu} 
+          >
+            <div
+              className={`${genericHamburgerLine} ${
+                open
+                  ? "rotate-45 translate-y-1 opacity-60 group-hover:opacity-100 "
+                  : "opacity-60 group-hover:opacity-100"
+              }`}
+            />
+            <div
+              className={`${genericHamburgerLine} ${
+                open ? "opacity-0" : "opacity-60 group-hover:opacity-100 "
+              }`}
+            />
+            <div
+              className={`${genericHamburgerLine} ${
+              open
+                  ? "-rotate-45 -translate-y-2 opacity-60 group-hover:opacity-100 "
+                  : "opacity-60 group-hover:opacity-100"
+              }`}
+            />
+          </button>
           <div className={`absolute h-screen opacity-0 top-0 py-6 px-4 w-2/3 font-semibold transition duration-300 ease-in-out bg-white ${open ? 'z-20  translate-x-0    opacity-100' : '-translate-x-full'}`}>
           <nav className='mt-14'>
             <ul className={`flex flex-col gap-4 ${windowSize[0] > 640 ? 'flex-row' : ''}`}>
@@ -76,5 +80,6 @@ export default function Nav(){
           </nav>
           </div>
         </div>
+      </div>
     )
 }

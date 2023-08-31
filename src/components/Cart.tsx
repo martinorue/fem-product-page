@@ -1,7 +1,7 @@
-import { useRef, useEffect, LegacyRef } from "react"
 import { Product } from "../../types"
 import { formatPrice } from "../utils/formatPrice"
 import IconDelete from "./IconDelete"
+import { useClickOutside } from "../hooks/useClickOutside"
 
 type CartProps = {
     cartQuantity: number
@@ -15,23 +15,8 @@ export default function Cart({ product, cartQuantity, getItemQuantity, removeFro
     const { price } = product
     const itemQuantity = getItemQuantity(product.id)
     const total = price * itemQuantity
-    const cartRef = useRef<HTMLDivElement>(null)
-
-    useEffect(() => {
-        const handleClickOutside = (event: MouseEvent) => {
-            if (cartRef.current && !cartRef.current.contains(event.target as Node)) {
-                setIsOpen(false)
-            }
-        }
+    const cartRef = useClickOutside(() => setIsOpen(false));
     
-        document.addEventListener('mousedown', handleClickOutside)
-    
-        return () => {
-            document.removeEventListener('mousedown', handleClickOutside)
-        }
-    }, [])
-    
-
     return(
         <div ref={cartRef} className='w-full min-h-52 bg-white absolute top-20 z-10 divide-y
          divide-gray-200 max-w-[350px] md:right-12 rounded-lg shadow-2xl'>
