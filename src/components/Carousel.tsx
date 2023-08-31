@@ -15,7 +15,7 @@ type ProductImageProps = {
 export const ProductImage = ({src, alt, width, height, styles}: ProductImageProps) => {
     return(
       <img 
-        src={'./src/assets/images/image-product-1.jpg'} 
+        src={src} 
         alt={alt}
         width={width} 
         height={height}
