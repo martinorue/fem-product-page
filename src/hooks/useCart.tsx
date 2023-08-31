@@ -5,9 +5,13 @@ type CartItem = {
     quantity: number
 }
 export function useCart(){
-    const [cartItems, setCartItems] = useState<CartItem[]>([])
+    const storedCartItems = localStorage.getItem('cartItems')
+    const initialCartItems = storedCartItems ? JSON.parse(storedCartItems) : []
+    const [cartItems, setCartItems] = useState<CartItem[]>(initialCartItems)
+    const [isOpen, setIsOpen] = useState(false)
+
     const [productQuantity, setProductQuantity] = useState(1)
-    
+
     useEffect(()=>{
         localStorage.setItem('cartItems', JSON.stringify(cartItems))
     }, [cartItems])
@@ -33,26 +37,38 @@ export function useCart(){
     const increaseItemQuantity = () => {
         const nextQuantity = productQuantity + 1
         setProductQuantity(nextQuantity)
-      }
+    }
     
-      const decreaseItemQuantity = () => {
+    const decreaseItemQuantity = () => {
         if(productQuantity === 1) return
         const nextQuantity = productQuantity - 1
         setProductQuantity(nextQuantity)
-      }
-
-      const reducer = (quantity: number, item: CartItem) => {
-        return item.quantity + quantity
     }
-      const cartQuantity = cartItems.reduce(reducer, 0)
+
+    const handleOpenCart = () => {
+        setIsOpen(!isOpen)
+    }
+
+    const reducer = (quantity: number, item: CartItem) => item.quantity + quantity
+        
+    const cartQuantity = cartItems.reduce(reducer, 0)
+
+    const removeFromCart = (id: number) => {
+        const items = cartItems.filter(item => item.id !== id)
+        setCartItems([...items])
+    }
 
       return{
         getItemQuantity,
-        addToCart,
-        increaseItemQuantity,
-        decreaseItemQuantity,
-        productQuantity,
-        cartQuantity
+            addToCart,
+            increaseItemQuantity,
+            decreaseItemQuantity,
+            handleOpenCart,
+            isOpen,
+            setIsOpen,
+            productQuantity,
+            cartQuantity,
+            removeFromCart 
       }
     
 }
