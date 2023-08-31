@@ -7,7 +7,7 @@ export const products: Product[] = [
         price: 125,
         discountPercentage: 50,
         images: [
-            { id: 1, src: 'src/assets/images/image-product-1.jpg' },
+            { id: 1, src: '../assets/images/image-product-1.jpg' },
             { id: 2, src: 'src/assets/images/image-product-2.jpg' },
             { id: 3, src: 'src/assets/images/image-product-3.jpg' },
             { id: 4, src: 'src/assets/images/image-product-4.jpg' }

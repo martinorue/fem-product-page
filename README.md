@@ -34,47 +34,30 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
+- Solution URL: [Add solution URL here](https://github.com/martinorue/fem-product-page)
 - Live Site URL: [Add live site URL here](https://your-live-site-url.com)
 
 ## My process
 
+En este desafío me propuse utilizar Tailwind y TypeScript, que son herramientas en las cuales estoy incursionando recientemente.
+La experiencia con Tailwind fue muy satisfactoria y planeo seguir utilizándolo. En TypeScript tengo mis dudas de estar siguiendo las mejores prácticas, pero hice mi mayor esfuerzo para lograrlo y seguiré estudiándolo más a fondo para sacarle todo el provecho posible.
+
+Si bien ya había utilizado Custom Hooks y Context en React para mi solución del [Todo app](https://www.frontendmentor.io/solutions/todo-app-using-react-6CigAWdga5) en esta oportunidad también decidí ponerlos en práctica. Por ejemplo, utilicé Context para el manejo del carrito aunque lo hice más bien pensando a futuro en un aplicación más 'real' donde necesitara ver el carrito desde otras partes de mi aplicación.
+
+En cuanto a los Custom Hooks, implementé uno para las funcionalidades del carrito y otro para poder cerrar el carrito, el menú de navegación y el modal de productos cuando se haga click afuera. Mi idea era no estar repitiendo el código en cada lugar que quisiera implementar esta funcionalidad.
+
 ### Built with
 
-- Semantic HTML5 markup
-- CSS custom properties
-- Flexbox
-- CSS Grid
-- Mobile-first workflow
 - [React](https://reactjs.org/) - JS library
-- [Next.js](https://nextjs.org/) - React framework
-- [Styled Components](https://styled-components.com/) - For styles
+- [TypeScript](https://www.typescriptlang.org/)
+- [Tailwind](https://tailwindcss.com/)
+- Mobile-first workflow
 
 **Note: These are just examples. Delete this note and replace the list above with your own choices**
 
 ### What I learned
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
 
-To see how you can add code snippets, see below:
-
-```html
-<h1>Some HTML code I'm proud of</h1>
-```
-```css
-.proud-of-this-css {
-  color: papayawhip;
-}
-```
-```js
-const proudOfThisFunc = () => {
-  console.log('🎉')
-}
-```
-
-If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
-
-**Note: Delete this note and the content within this section and replace with your own learnings.**
 
 ### Continued development
 
