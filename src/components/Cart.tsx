@@ -18,8 +18,8 @@ export default function Cart({ product, cartQuantity, getItemQuantity, removeFro
     const cartRef = useClickOutside(() => setIsOpen(false));
     
     return(
-        <div ref={cartRef} className='w-full min-h-52 bg-white absolute top-20 z-10 divide-y
-         divide-gray-200 max-w-[350px] md:right-12 rounded-lg shadow-2xl'>
+        <div ref={cartRef} className='w-full min-h-52 translate-x-[-12%] translate-y-[28%] bg-white absolute  z-10 divide-y
+         divide-gray-200 max-w-[325px] sm:right-12 rounded-lg shadow-2xl'>
             <div className="font-semibold p-4">Cart</div>
             {cartQuantity === 0 ?
                 <div className="flex items-center justify-center h-[calc(13rem-56px)]">

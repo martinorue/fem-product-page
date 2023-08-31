@@ -30,21 +30,25 @@ Users should be able to:
 
 ### Screenshot
 
-![](./screenshot.jpg)
+![desktop view](./screencapture.png)
+![mobile view](./screencapture-mobile.png)
+![desktop cart view](./screencapture-desktop-cart.png)
+![mobile cart view](./screencapture-mobile-cart.png)
+
+
 
 ### Links
 
 - Solution URL: [Add solution URL here](https://github.com/martinorue/fem-product-page)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Live Site URL: [Add live site URL here](https://fem-product-page-eight.vercel.app/)
 
 ## My process
 
-En este desafío me propuse utilizar Tailwind y TypeScript, que son herramientas en las cuales estoy incursionando recientemente.
-La experiencia con Tailwind fue muy satisfactoria y planeo seguir utilizándolo. En TypeScript tengo mis dudas de estar siguiendo las mejores prácticas, pero hice mi mayor esfuerzo para lograrlo y seguiré estudiándolo más a fondo para sacarle todo el provecho posible.
+In this challenge, I set out to use Tailwind and TypeScript, which are tools I've been delving into recently. The experience with Tailwind was very satisfying, and I plan to continue using it. In TypeScript, I have my doubts about whether I'm following the best practices, but I put in my best effort to achieve it and I will continue to study it more thoroughly to get the most out of it.
 
-Si bien ya había utilizado Custom Hooks y Context en React para mi solución del [Todo app](https://www.frontendmentor.io/solutions/todo-app-using-react-6CigAWdga5) en esta oportunidad también decidí ponerlos en práctica. Por ejemplo, utilicé Context para el manejo del carrito aunque lo hice más bien pensando a futuro en un aplicación más 'real' donde necesitara ver el carrito desde otras partes de mi aplicación.
+While I had already used Custom Hooks and Context in React for my solution to the [Todo app](https://www.frontendmentor.io/solutions/todo-app-using-react-6CigAWdga5), this time I also decided to put them into practice. For example, I used Context for managing the cart, although I did this with more of a future-oriented mindset, thinking about a more 'real' application where I might need to access the cart from other parts of my application.
 
-En cuanto a los Custom Hooks, implementé uno para las funcionalidades del carrito y otro para poder cerrar el carrito, el menú de navegación y el modal de productos cuando se haga click afuera. Mi idea era no estar repitiendo el código en cada lugar que quisiera implementar esta funcionalidad.
+Regarding the Custom Hooks, I implemented one for cart functionalities and another for being able to close the cart, the navigation menu, and the product modal when clicking outside. My idea was to avoid repeating the code in every place I wanted to implement this functionality.
 
 ### Built with
 
@@ -57,11 +61,23 @@ En cuanto a los Custom Hooks, implementé uno para las funcionalidades del carri
 
 ### What I learned
 
+I learned that it's not recommended to nest a `<nav>` element within a `<header>` element. 
 
+I discovered the importance of self-hosting web fonts for better web performance.
+
+How to create a hamburger menu.
+
+How to use window.innerWidth property in React to dynamically adapt your user interface, such as hiding/showing the hamburger icon and navigation items based on the window width.
+
+How to create a carousel component using only ReactJS and TailwindCSS, without relying on external libraries.
+
+How to implementing a shopping cart using React and TypeScript. I utilized Context to manage the shopping cart's state and display a badge indicating the quantity of products in the cart.
+
+I leveraged Headless UI to modify a modal component and create an overlay carousel.
 
 ### Continued development
 
-I would like to 
+I would like to take all this learning and apply it to the creation of a more comprehensive and realistic e-commerce solution
 
 ### Useful resources
 
