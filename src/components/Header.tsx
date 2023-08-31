@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react'
+import { useContext } from 'react'
 import avatar from '../assets/images/image-avatar.png'
 import sneakersLogo from '../assets/images/logo.svg'
 import { CartContext } from '../context/CartContext'
